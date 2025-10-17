@@ -2,13 +2,4 @@ redbarrio/node_modules/deno/deno.exe
 redbarrio/node_modules/@deno/win32-x64/deno.exe
 # Ignorar directorios
 redbarrio/.angular
-/android
-/node_modules
-/supabase
-/.vscode
-/www
-/platforms # (Asumido en proyectos Ionic/Angular)
-/hooks # (Asumido en proyectos Ionic/Angular)
-node_modules/
 redbarrio/node_modules/
-.angular/cache
