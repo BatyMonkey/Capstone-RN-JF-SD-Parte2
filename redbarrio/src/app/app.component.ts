@@ -8,6 +8,7 @@ import { supabase } from './core/supabase.client';
 import { StatusBar, Style } from '@capacitor/status-bar';
 import { App } from '@capacitor/app';
 import { Browser } from '@capacitor/browser';
+import('./dashboard/dashboard.component');
 
 @Component({
   selector: 'app-root',
@@ -59,11 +60,16 @@ export class AppComponent {
   }
 
   async go(url: string) {
-    try {
-      if (await this.menu.isOpen('mainMenu')) await this.menu.close('mainMenu');
-    } catch {}
-    await this.router.navigateByUrl(url);
-  }
+  try {
+    if (await this.menu.isOpen('mainMenu')) {
+      await this.menu.close('mainMenu');
+      // 🔹 Esperar un pequeño delay para evitar el conflicto con el lazy-load
+      await new Promise(res => setTimeout(res, 75));
+    }
+  } catch {}
+
+  await this.router.navigateByUrl(url, { replaceUrl: false });
+}
 
   async salir() {
     try {
